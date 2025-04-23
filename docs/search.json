@@ -7,27 +7,6 @@
     "text": "Contact us:"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "HPC Workshop 1: Introduction to R",
-    "section": "",
-    "text": "What is HPC?\nLimitations of R\nProfiling and benchmarking\nVectorizing code\nEfficient memory use\nData I/O\nParallel programming"
-  },
-  {
-    "objectID": "index.html#getting-up",
-    "href": "index.html#getting-up",
-    "title": "Habits",
-    "section": "Getting up",
-    "text": "Getting up\n\nTurn off alarm\nGet out of bed"
-  },
-  {
-    "objectID": "index.html#going-to-sleep",
-    "href": "index.html#going-to-sleep",
-    "title": "Habits",
-    "section": "Going to sleep",
-    "text": "Going to sleep\n\nGet in bed\nCount sheep"
-  },
-  {
     "objectID": "index.html#outline",
     "href": "index.html#outline",
     "title": "HPC Workshop 1: Introduction to R",
@@ -74,7 +53,7 @@
     "href": "index.html#compute-node-specs",
     "title": "HPC Workshop 1: Introduction to R",
     "section": "Compute node specs",
-    "text": "Compute node specs\n\nHPC clusters may have a mix of different compute nodes\n\nDifferent types of CPUs (e.g., Intel vs. AMD)\nVarying numbers of cores per node (time)\nVarying amounts of memory per node (space)\nSome nodes may also have GPUs\n\nOn CARC HPC clusters\n\nUse nodeinfo command to display cluster partition and node status\n1 logical CPU = 1 core = 1 thread (--cpus-per-task)\nSee more node details with: module load gcc/11.3.0 hwloc && lstopo"
+    "text": "Compute node specs\n\nHPC clusters may have a mix of different compute nodes\n\nDifferent types of CPUs (e.g., Intel vs. AMD)\nVarying numbers of cores per node (time)\nVarying amounts of memory per node (space)\nSome nodes may also have GPUs\n\nOn HPC clusters\n\nUse nodeinfo command to display cluster partition and node status\n1 logical CPU = 1 core = 1 thread (--cpus-per-task)\nSee more node details with: module load gcc/11.3.0 hwloc && lstopo"
   },
   {
     "objectID": "index.html#cpu-specs",
@@ -123,7 +102,7 @@
     "href": "index.html#profiling-r-code",
     "title": "HPC Workshop 1: Introduction to R",
     "section": "Profiling R code",
-    "text": "Profiling R code\n\nBase R: Rprof(), summaryRprof(), and Rprofmem()\nprofvis for RStudio (uses Rprof() output file)\nproftools (more features, better interface)\nprofmem for memory profiling\npbdPROF, pbdPAPI, and hpcvis for MPI and low-level profiling\nProfiling output can be difficult to interpret\nNote that C/C++/Fortran code is not profiled (except with pbdPAPI)\nUse CARC OnDemand apps to view graphics"
+    "text": "Profiling R code\n\nBase R: Rprof(), summaryRprof(), and Rprofmem()\nprofvis for RStudio (uses Rprof() output file)\nproftools (more features, better interface)\nprofmem for memory profiling\npbdPROF, pbdPAPI, and hpcvis for MPI and low-level profiling\nProfiling output can be difficult to interpret\nNote that C/C++/Fortran code is not profiled (except with pbdPAPI)"
   },
   {
     "objectID": "index.html#profiling-using-proftools",
@@ -221,7 +200,7 @@
     "href": "index.html#fast-data-io",
     "title": "HPC Workshop 1: Introduction to R",
     "section": "Fast data I/O",
-    "text": "Fast data I/O\n\nBase R functions for I/O are relatively slow\nFor faster I/O (based on format)\n\nvroom for tabular data\nreadr for tabular data (v2.0.0+ based on vroom)\ndata.table for tabular data\narrow for binary Arrow files\nfst for binary fst files (data frames)\nqs for binary qs files\n\nMinimize I/O when possible to improve performance\nOn CARC HPC clusters, /project and /scratch1 are high-performance, parallel I/O file systems"
+    "text": "Fast data I/O\n\nBase R functions for I/O are relatively slow\nFor faster I/O (based on format)\n\nvroom for tabular data\nreadr for tabular data (v2.0.0+ based on vroom)\ndata.table for tabular data\narrow for binary Arrow files\nfst for binary fst files (data frames)\nqs for binary qs files\n\nMinimize I/O when possible to improve performance\nOn HPC clusters, /projects and /scratch are high-performance, parallel I/O file systems"
   },
   {
     "objectID": "index.html#fast-data-processing",
@@ -263,7 +242,7 @@
     "href": "index.html#optimized-blas-library",
     "title": "HPC Workshop 1: Introduction to R",
     "section": "Optimized BLAS library",
-    "text": "Optimized BLAS library\n\nOn CARC HPC clusters, R modules use multi-threaded OpenBLAS\nOptimized linear algebra library used for linear algebra operations\nWill automatically use available number of cores if needed\nOn CARC HPC clusters, OpenBLAS modules are multi-threaded via OpenMP\nAlso built with dynamic CPU architecture optimizations\nExplicitly set number of cores to use with environment variable OMP_NUM_THREADS\nOr use openblasctl::openblas_set_num_threads()"
+    "text": "Optimized BLAS library\n\nOn HPC clusters, R modules use multi-threaded OpenBLAS\nOptimized linear algebra library used for linear algebra operations\nWill automatically use available number of cores if needed\nOn HPC clusters, OpenBLAS modules are multi-threaded via OpenMP\nAlso built with dynamic CPU architecture optimizations\nExplicitly set number of cores to use with environment variable OMP_NUM_THREADS\nOr use openblasctl::openblas_set_num_threads()"
   },
   {
     "objectID": "index.html#openblas-example",
@@ -427,10 +406,10 @@
     "text": "Additional resources\n\nR Project\nR Manuals\nR package documentation\nCRAN Task View on High-Performance and Parallel Computing with R\nHPCRAN\nProgramming with Big Data in R\nFastverse\nFutureverse\nrOpenSci\nWeb books\n\nThe R Inferno\nAdvanced R\nEfficient R Programming"
   },
   {
-    "objectID": "index.html#carc-support",
-    "href": "index.html#carc-support",
+    "objectID": "index.html#support",
+    "href": "index.html#support",
     "title": "HPC Workshop 1: Introduction to R",
-    "section": "CARC support",
-    "text": "CARC support\n\nUsing R on CARC HPC clusters\nR package installation guide\nSubmit a support ticket\nOffice Hours\n\nEvery Tuesday 2:30-5pm\nGet Zoom link here"
+    "section": "support",
+    "text": "support\n\nUsing R on HPC clusters\nR package installation guide\nSubmit a support ticket\nOffice Hours\n\nEvery Tuesday 2:00-3pm\nGet Zoom link here"
   }
 ]

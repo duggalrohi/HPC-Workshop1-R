@@ -210,7 +210,7 @@ Rohit Duggal
 <li>Varying amounts of <strong>memory per node</strong> (space)</li>
 <li>Some nodes may also have GPUs</li>
 </ul></li>
-<li>On CARC HPC clusters
+<li>On HPC clusters
 <ul>
 <li>Use <code>nodeinfo</code> command to display cluster partition and node status</li>
 <li>1 logical CPU = 1 core = 1 thread (<code>--cpus-per-task</code>)</li>
@@ -311,7 +311,6 @@ Rohit Duggal
 <li><code>pbdPROF</code>, <code>pbdPAPI</code>, and <code>hpcvis</code> for MPI and low-level profiling</li>
 <li>Profiling output can be difficult to interpret</li>
 <li>Note that C/C++/Fortran code is not profiled (except with <code>pbdPAPI</code>)</li>
-<li>Use <a href="https://ondemand.carc.usc.edu">CARC OnDemand</a> apps to view graphics</li>
 </ul>
 </section>
 <section id="profiling-using-proftools" class="slide level2">
@@ -446,7 +445,7 @@ Rohit Duggal
 <li><code>qs</code> for binary qs files</li>
 </ul></li>
 <li>Minimize I/O when possible to improve performance</li>
-<li>On CARC HPC clusters, <code>/project</code> and <code>/scratch1</code> are high-performance, parallel I/O file systems</li>
+<li>On HPC clusters, <code>/projects</code> and <code>/scratch</code> are high-performance, parallel I/O file systems</li>
 </ul>
 </section>
 <section id="fast-data-processing" class="slide level2">
@@ -532,10 +531,10 @@ Rohit Duggal
 <section id="optimized-blas-library" class="slide level2">
 <h2>Optimized BLAS library</h2>
 <ul>
-<li>On CARC HPC clusters, R modules use multi-threaded OpenBLAS</li>
+<li>On HPC clusters, R modules use multi-threaded OpenBLAS</li>
 <li>Optimized linear algebra library used for linear algebra operations</li>
 <li>Will automatically use available number of cores if needed</li>
-<li>On CARC HPC clusters, OpenBLAS modules are multi-threaded via OpenMP</li>
+<li>On HPC clusters, OpenBLAS modules are multi-threaded via OpenMP</li>
 <li>Also built with dynamic CPU architecture optimizations</li>
 <li>Explicitly set number of cores to use with environment variable <code>OMP_NUM_THREADS</code></li>
 <li>Or use <code>openblasctl::openblas_set_num_threads()</code></li>
@@ -696,7 +695,7 @@ Rohit Duggal
 </ul></li>
 <li>Submitting lots of jobs (&gt; 1000) negatively impacts job scheduler</li>
 <li>Pack short-running jobs into one job</li>
-<li>Use a program like <a href="https://www.carc.usc.edu/user-information/user-guides/software-and-programming/launcher">Launcher</a></li>
+<li>Use a program like <a href="https://www.usc.edu/user-information/user-guides/software-and-programming/launcher">Launcher</a></li>
 </ul>
 </section>
 <section id="using-gpu-acceleration" class="slide level2">
@@ -742,16 +741,16 @@ Rohit Duggal
 </ul></li>
 </ul>
 </section>
-<section id="carc-support" class="slide level2">
-<h2>CARC support</h2>
+<section id="support" class="slide level2">
+<h2>support</h2>
 <ul>
-<li><a href="https://www.carc.usc.edu/user-information/user-guides/software-and-programming/r">Using R on CARC HPC clusters</a></li>
+<li><a href="https://www.usc.edu/user-information/user-guides/software-and-programming/r">Using R on HPC clusters</a></li>
 <li><a href="https://hpc-discourse.usc.edu/t/r-package-installation-guide/653">R package installation guide</a></li>
-<li><a href="https://www.carc.usc.edu/user-information/ticket-submission">Submit a support ticket</a></li>
+<li><a href="https://www.usc.edu/user-information/ticket-submission">Submit a support ticket</a></li>
 <li>Office Hours
 <ul>
-<li>Every Tuesday 2:30-5pm</li>
-<li>Get Zoom link <a href="https://www.carc.usc.edu/education-and-resources/office-hours">here</a></li>
+<li>Every Tuesday 2:00-3pm</li>
+<li>Get Zoom link <a href="">here</a></li>
 </ul></li>
 </ul>
 

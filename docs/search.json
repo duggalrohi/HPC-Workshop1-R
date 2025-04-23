@@ -1,0 +1,436 @@
+[
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "",
+    "text": "Contact us:"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "",
+    "text": "What is HPC?\nLimitations of R\nProfiling and benchmarking\nVectorizing code\nEfficient memory use\nData I/O\nParallel programming"
+  },
+  {
+    "objectID": "index.html#getting-up",
+    "href": "index.html#getting-up",
+    "title": "Habits",
+    "section": "Getting up",
+    "text": "Getting up\n\nTurn off alarm\nGet out of bed"
+  },
+  {
+    "objectID": "index.html#going-to-sleep",
+    "href": "index.html#going-to-sleep",
+    "title": "Habits",
+    "section": "Going to sleep",
+    "text": "Going to sleep\n\nGet in bed\nCount sheep"
+  },
+  {
+    "objectID": "index.html#outline",
+    "href": "index.html#outline",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Outline",
+    "text": "Outline\n\nWhat is HPC?\nLimitations of R\nProfiling and benchmarking\nVectorizing code\nEfficient memory use\nData I/O\nParallel programming"
+  },
+  {
+    "objectID": "index.html#what-is-hpc",
+    "href": "index.html#what-is-hpc",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "What is HPC?",
+    "text": "What is HPC?\n\nHigh-performance computing\nRelative to laptop and desktop computers\nMore processors (cluster of compute nodes)\nMore memory (shared and distributed memory)\nHigh-capacity, fast-access disk storage\nHigh-speed, high-bandwidth networks"
+  },
+  {
+    "objectID": "index.html#what-does-hpc-enable",
+    "href": "index.html#what-does-hpc-enable",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "What does HPC enable?",
+    "text": "What does HPC enable?\n\nScaling (using more compute resources)\nSpeedup (faster run times)\nThroughput (running many jobs at the same time)\nDuration (running jobs for days or weeks)"
+  },
+  {
+    "objectID": "index.html#why-use-r-on-hpc-clusters",
+    "href": "index.html#why-use-r-on-hpc-clusters",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Why use R on HPC clusters?",
+    "text": "Why use R on HPC clusters?\n\nLimitations of a laptop or workstation computer\nSpace (data does not fit in memory)\nTime (takes too long to run)\nOptimized software stacks available"
+  },
+  {
+    "objectID": "index.html#simplified-computing-model",
+    "href": "index.html#simplified-computing-model",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Simplified computing model",
+    "text": "Simplified computing model\n\nA compute node (individual computer) has four main components\n\nCentral Processing Unit (CPU with multiple cores/logical CPUs)\nRandom Access Memory (RAM)\nI/O buses\nStorage drives (direct-attached and/or network-attached storage)"
+  },
+  {
+    "objectID": "index.html#computing-constraints",
+    "href": "index.html#computing-constraints",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Computing constraints",
+    "text": "Computing constraints\n\nCPU cores = CPU-bound jobs\nMemory = Memory-bound jobs\nI/O speed = I/O-bound jobs\nNetwork speed = Network-bound jobs"
+  },
+  {
+    "objectID": "index.html#compute-node-specs",
+    "href": "index.html#compute-node-specs",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Compute node specs",
+    "text": "Compute node specs\n\nHPC clusters may have a mix of different compute nodes\n\nDifferent types of CPUs (e.g., Intel vs. AMD)\nVarying numbers of cores per node (time)\nVarying amounts of memory per node (space)\nSome nodes may also have GPUs\n\nOn CARC HPC clusters\n\nUse nodeinfo command to display cluster partition and node status\n1 logical CPU = 1 core = 1 thread (--cpus-per-task)\nSee more node details with: module load gcc/11.3.0 hwloc && lstopo"
+  },
+  {
+    "objectID": "index.html#cpu-specs",
+    "href": "index.html#cpu-specs",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "CPU specs",
+    "text": "CPU specs\n\nDifferent CPU models have different capabilities and features\n\nInstruction set architectures (e.g., x86-64, ARM64, etc.)\nMicroarchitecture designs (e.g., AMD Zen 3, Intel Cascade Lake, etc.)\nVector extensions (e.g., AVX, AVX2, AVX-512, etc.)\nClock speed (aka frequency)\nLocal memory cache size\n\nSimply running jobs on a better CPU will typically reduce run time\nUse lscpu to display CPU specs on a node"
+  },
+  {
+    "objectID": "index.html#requesting-vs.-using-hpc-resources",
+    "href": "index.html#requesting-vs.-using-hpc-resources",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Requesting vs. using HPC resources",
+    "text": "Requesting vs. using HPC resources\n\nFor Slurm jobs, requesting resources does not mean that the job actually uses them\nYou likely need to modify your R code to make use of multiple cores or nodes\n\nThere are different methods to do this (implicit vs. explicit parallelism)\nRequesting more cores/nodes does not necessarily lead to speedups\nThere is an optimal number or cores depending on the computations"
+  },
+  {
+    "objectID": "index.html#limitations-of-r",
+    "href": "index.html#limitations-of-r",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Limitations of R",
+    "text": "Limitations of R\n\nR is an interpreted language\n\nCan be slow relative to compiled languages (C/C++/Fortran)\nBut easier to program\n\nR uses a single core by default\nR stores objects in memory by default\nMaximum length of a vector is 2^31 - 1 (2,147,483,647) (32-bit integer)\nThese limitations can be overcome"
+  },
+  {
+    "objectID": "index.html#software-optimization",
+    "href": "index.html#software-optimization",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Software optimization",
+    "text": "Software optimization\n\nR itself is mostly written in compiled languages (C/C++/Fortran)\nMany R functions and packages are actually interfaces to compiled programs\nCompiled programs can be optimized based on CPU architectures\nCompiler optimization flags can be used to improve performance of R and some R packages\n\nPrimarily for installing packages on Linux from source\nSpecify optimization flags in ~/.R/Makevars\nIf targeting a specific CPU type, the program will only run on that CPU type\nExamples: data.table, RStan"
+  },
+  {
+    "objectID": "index.html#general-recommendations-to-improve-performance-of-r-code",
+    "href": "index.html#general-recommendations-to-improve-performance-of-r-code",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "General recommendations to improve performance of R code",
+    "text": "General recommendations to improve performance of R code\n\nCode first, optimize later (if needed)\nProfile code to identify bottlenecks\nUse existing optimized solutions\nConsult package and function documentation\nSimplify when possible (do less)\nUse vectorized functions\nModify-in-place (avoid duplicating data in memory)\nParallelize when appropriate"
+  },
+  {
+    "objectID": "index.html#profiling-and-benchmarking",
+    "href": "index.html#profiling-and-benchmarking",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Profiling and benchmarking",
+    "text": "Profiling and benchmarking\n\nAim for code that is fast enough\nProgrammer time is more expensive than compute time\nBasic profiling workflow:\n\n\nProfile code to understand run time and memory use\nIdentify bottlenecks (i.e., parts of code that take the most time)\nTry to improve performance of bottlenecks by modifying code\nBenchmark alternative code to identify best alternative"
+  },
+  {
+    "objectID": "index.html#profiling-r-code",
+    "href": "index.html#profiling-r-code",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Profiling R code",
+    "text": "Profiling R code\n\nBase R: Rprof(), summaryRprof(), and Rprofmem()\nprofvis for RStudio (uses Rprof() output file)\nproftools (more features, better interface)\nprofmem for memory profiling\npbdPROF, pbdPAPI, and hpcvis for MPI and low-level profiling\nProfiling output can be difficult to interpret\nNote that C/C++/Fortran code is not profiled (except with pbdPAPI)\nUse CARC OnDemand apps to view graphics"
+  },
+  {
+    "objectID": "index.html#profiling-using-proftools",
+    "href": "index.html#profiling-using-proftools",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Profiling using proftools",
+    "text": "Profiling using proftools\n\nUse profileExpr() to profile R code or script\nProfiles line-by-line and saves output\nThen use other functions to summarize output\n\nsrcSummary()\nflatProfile()\nhotPaths()"
+  },
+  {
+    "objectID": "index.html#proftools-example",
+    "href": "index.html#proftools-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "proftools example",
+    "text": "proftools example"
+  },
+  {
+    "objectID": "index.html#benchmarking-r-code",
+    "href": "index.html#benchmarking-r-code",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Benchmarking R code",
+    "text": "Benchmarking R code\n\nBase R: system.time()\nbench (more features)\nmicrobenchmark for short-running code\nbenchmarkme for benchmarking hardware"
+  },
+  {
+    "objectID": "index.html#system.time-examples",
+    "href": "index.html#system.time-examples",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "system.time() examples",
+    "text": "system.time() examples"
+  },
+  {
+    "objectID": "index.html#vectorizing-code",
+    "href": "index.html#vectorizing-code",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Vectorizing code",
+    "text": "Vectorizing code\n\nR is designed around vectors (objects stored in column-major order)\nVectorize code when possible to improve performance\n\nThink in terms of vectors (or columns), not scalars\nPerform operations on vectors, not individual elements\n\nUse vectorized functions that already exist\n\nThese functions are typically for loops written in C/C++/Fortran\nExamples: arithmetic and matrix operators, colMeans(), ifelse()\n\nA vectorized function in R is easier to read and write"
+  },
+  {
+    "objectID": "index.html#vectorizing-example",
+    "href": "index.html#vectorizing-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Vectorizing example",
+    "text": "Vectorizing example"
+  },
+  {
+    "objectID": "index.html#efficient-memory-use",
+    "href": "index.html#efficient-memory-use",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Efficient memory use",
+    "text": "Efficient memory use\n\nIf R runs out of memory\n\nWithin R, error message like “cannot allocate vector”\nFor Slurm jobs, error message like “oom-kill event” (out-of-memory)\nMay just need to request more memory if available\n\nAvoid copying data and modify-in-place when possible\nRemove objects from environment when no longer needed\nStore in simpler formats (e.g., use matrix instead of data frame when possible)\nStore data in alternative efficient formats"
+  },
+  {
+    "objectID": "index.html#avoiding-object-duplication",
+    "href": "index.html#avoiding-object-duplication",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Avoiding object duplication",
+    "text": "Avoiding object duplication\n\nR tries not to copy objects (copy-on-modify)\nCopying slows down run time and uses memory\nFunctions that modify objects will typically copy objects before modifying\nWorking with large data objects can lead to large memory use because of this\nGrowing objects will duplicate objects in memory\nPre-allocate objects when possible\nUse modify-in-place operations when possible"
+  },
+  {
+    "objectID": "index.html#copy-on-modify-and-modify-in-place",
+    "href": "index.html#copy-on-modify-and-modify-in-place",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Copy-on-modify and modify-in-place",
+    "text": "Copy-on-modify and modify-in-place"
+  },
+  {
+    "objectID": "index.html#when-does-r-copy-objects",
+    "href": "index.html#when-does-r-copy-objects",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "When does R copy objects?",
+    "text": "When does R copy objects?\n\nDepends on how objects are modified and functions used\nCan be difficult to predict when copies are made\nUse tracemem() and memory profiling to collect data"
+  },
+  {
+    "objectID": "index.html#object-duplication-example",
+    "href": "index.html#object-duplication-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Object duplication example",
+    "text": "Object duplication example"
+  },
+  {
+    "objectID": "index.html#object-duplication-example-continued",
+    "href": "index.html#object-duplication-example-continued",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Object duplication example (continued)",
+    "text": "Object duplication example (continued)"
+  },
+  {
+    "objectID": "index.html#memory-efficient-data-formats",
+    "href": "index.html#memory-efficient-data-formats",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Memory-efficient data formats",
+    "text": "Memory-efficient data formats\n\nAlternative data formats can reduce memory use\n\nSmaller object size\nFaster data I/O and data operations\nFor on-disk formats, performance limited by read/write speeds\n\nFor data frames\n\ndata.table package for modify-in-place operations\narrow package for on-disk binary format (columnar format)\nfst package for on-disk binary format (efficient reading and subsetting)\n\nFor other data structures\n\nbigmemory for big matrices\nbigstatsr for on-disk big matrices\npbdDMAT for big matrices in MPI jobs\nncdf4 or RNetCDF for NetCDF files (arrays)\npbdNCDF4 for NetCDF files (arrays) in MPI jobs\nhdf5r for HDF5 files"
+  },
+  {
+    "objectID": "index.html#fast-data-io",
+    "href": "index.html#fast-data-io",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Fast data I/O",
+    "text": "Fast data I/O\n\nBase R functions for I/O are relatively slow\nFor faster I/O (based on format)\n\nvroom for tabular data\nreadr for tabular data (v2.0.0+ based on vroom)\ndata.table for tabular data\narrow for binary Arrow files\nfst for binary fst files (data frames)\nqs for binary qs files\n\nMinimize I/O when possible to improve performance\nOn CARC HPC clusters, /project and /scratch1 are high-performance, parallel I/O file systems"
+  },
+  {
+    "objectID": "index.html#fast-data-processing",
+    "href": "index.html#fast-data-processing",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Fast data processing",
+    "text": "Fast data processing\n\nBase R and tidyverse packages are relatively slow\nFor faster data processing\n\ndata.table in general\ndtplyr for drop-in dplyr substitute\ntidytable for tidy data manipulation\ntidyfst for tidy data manipulation\nmultidplyr for big data dplyr substitute (&gt; 10M obs)\nbigstatsr for big matrices (larger than memory)\ncollapse for data transformation and exploration"
+  },
+  {
+    "objectID": "index.html#improving-performance-of-serial-single-core-jobs",
+    "href": "index.html#improving-performance-of-serial-single-core-jobs",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Improving performance of serial (single-core) jobs",
+    "text": "Improving performance of serial (single-core) jobs\n\nUse optimized software (e.g., OpenBLAS, data.table, etc.)\nUse vectorized functions\nModify-in-place (avoid duplicating data in memory)\nUse a better CPU\n\nHigher frequency\nLarger cache sizes"
+  },
+  {
+    "objectID": "index.html#parallel-programming",
+    "href": "index.html#parallel-programming",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Parallel programming",
+    "text": "Parallel programming\n\nSimultaneous execution of different parts of a larger computation\nData vs. task parallelism\nTightly coupled (interdependent) vs. loosely coupled (independent) computations\nImplicit vs. explicit parallel programming\nUsing one (multicore) compute node is easier than using multiple nodes\nScaling computation to more processors (cores)\nFocus on speedup (decrease in run time)"
+  },
+  {
+    "objectID": "index.html#costs-of-parallelizing",
+    "href": "index.html#costs-of-parallelizing",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Costs of parallelizing",
+    "text": "Costs of parallelizing\n\nSome computations are not worth parallelizing\nSome costs to parallelizing (overhead)\n\nChanging code\nSpawning child processes\nCopying data and environment\nCommunications\nLoad balancing\n\nSpeedup not proportional to number of cores (Amdahl’s law)\nOptimal number of cores\n\nDepends on specific computations\nExperiment to find"
+  },
+  {
+    "objectID": "index.html#implicit-parallelism",
+    "href": "index.html#implicit-parallelism",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Implicit parallelism",
+    "text": "Implicit parallelism\n\nParallel programming details are abstracted away (low-effort parallelism)\nLimited to one compute node (maximize cores)\nUsing optimized, multi-threaded BLAS/LAPACK library (not default reference)\n\nBLAS = Basic Linear Algebra Subprograms\nLAPACK = Linear Algebra Package\nFor example, OpenBLAS, Intel MKL, or AMD BLIS\n\nUsing multi-threaded packages\n\nTypically packages written in C/C++ and using OpenMP for multi-threading\nIf needed, simply set number of cores to use\nExample: data.table is multi-threaded via OpenMP"
+  },
+  {
+    "objectID": "index.html#optimized-blas-library",
+    "href": "index.html#optimized-blas-library",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Optimized BLAS library",
+    "text": "Optimized BLAS library\n\nOn CARC HPC clusters, R modules use multi-threaded OpenBLAS\nOptimized linear algebra library used for linear algebra operations\nWill automatically use available number of cores if needed\nOn CARC HPC clusters, OpenBLAS modules are multi-threaded via OpenMP\nAlso built with dynamic CPU architecture optimizations\nExplicitly set number of cores to use with environment variable OMP_NUM_THREADS\nOr use openblasctl::openblas_set_num_threads()"
+  },
+  {
+    "objectID": "index.html#openblas-example",
+    "href": "index.html#openblas-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "OpenBLAS example",
+    "text": "OpenBLAS example"
+  },
+  {
+    "objectID": "index.html#data.table-example",
+    "href": "index.html#data.table-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "data.table example",
+    "text": "data.table example"
+  },
+  {
+    "objectID": "index.html#explicit-parallelism",
+    "href": "index.html#explicit-parallelism",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Explicit parallelism",
+    "text": "Explicit parallelism\n\nExplicitly set up cluster of cores or nodes to parallelize over\nSingle node (shared memory) vs. multiple nodes (distributed memory)\nEasier to set up with single (multicore) node\nDifferent types of explicit parallelism\nWhich one to use depends on specific computations"
+  },
+  {
+    "objectID": "index.html#conflicts-with-implicit-and-explicit-parallelism",
+    "href": "index.html#conflicts-with-implicit-and-explicit-parallelism",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Conflicts with implicit and explicit parallelism",
+    "text": "Conflicts with implicit and explicit parallelism\n\nBe careful mixing implicit and explicit parallelism\nImplicit parallel code may use more resources than intended\nTurn off implicit OpenBLAS parallelism with export OMP_NUM_THREADS=1\nOr use openblasctl::openblas_set_num_threads(1)"
+  },
+  {
+    "objectID": "index.html#some-use-cases-for-explicit-parallelism",
+    "href": "index.html#some-use-cases-for-explicit-parallelism",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Some use cases for explicit parallelism",
+    "text": "Some use cases for explicit parallelism\n\nLooping over large number of objects and applying same operations\nRunning same model on many datasets\nRunning many alternative models on same dataset\nProcessing and analyzing data larger than memory available on single node"
+  },
+  {
+    "objectID": "index.html#base-r-parallel",
+    "href": "index.html#base-r-parallel",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Base R parallel",
+    "text": "Base R parallel\n\nlibrary(parallel)\nVarious functions for parallel computing\n\nmclapply(), pvec(), mcmapply()\nmakeCluster()\nparApply(), parLapply(), parSapply()\nmcparallel(), mccollect()"
+  },
+  {
+    "objectID": "index.html#using-mclapply-from-parallel",
+    "href": "index.html#using-mclapply-from-parallel",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Using mclapply() from parallel",
+    "text": "Using mclapply() from parallel\n\nParallel version of lapply() using forking\n\nWorks on Linux or macOS\nWill only use 1 core on Windows\n\nForking is faster than making socket clusters\nUse on a single node with multiple cores\nFor loosely coupled (independent) tasks (no communication needed between tasks)\nApply same function to multiple inputs simultaneously using multiple cores"
+  },
+  {
+    "objectID": "index.html#mclapply-example",
+    "href": "index.html#mclapply-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "mclapply() example",
+    "text": "mclapply() example"
+  },
+  {
+    "objectID": "index.html#job-script-for-mclapply-example",
+    "href": "index.html#job-script-for-mclapply-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Job script for mclapply() example",
+    "text": "Job script for mclapply() example"
+  },
+  {
+    "objectID": "index.html#parallel-with-the-futureverse",
+    "href": "index.html#parallel-with-the-futureverse",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Parallel with the futureverse",
+    "text": "Parallel with the futureverse\n\nA unified parallelization framework for R\nAbstracts away the technical aspects of parallel processing\nPackages include future, future.apply, furrr, doFuture, etc.\nSet up parallel resources with plan()\n\nSingle node: plan(multicore)\nMultiple nodes: plan(cluster)\n\nParallelize via future_lapply(), future_map(), etc."
+  },
+  {
+    "objectID": "index.html#future-planmulticore-example",
+    "href": "index.html#future-planmulticore-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "future plan(multicore) example",
+    "text": "future plan(multicore) example"
+  },
+  {
+    "objectID": "index.html#job-script-for-future-planmulticore-example",
+    "href": "index.html#job-script-for-future-planmulticore-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Job script for future plan(multicore) example",
+    "text": "Job script for future plan(multicore) example"
+  },
+  {
+    "objectID": "index.html#future-plancluster-example",
+    "href": "index.html#future-plancluster-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "future plan(cluster) example",
+    "text": "future plan(cluster) example"
+  },
+  {
+    "objectID": "index.html#job-script-for-future-plancluster-example",
+    "href": "index.html#job-script-for-future-plancluster-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Job script for future plan(cluster) example",
+    "text": "Job script for future plan(cluster) example"
+  },
+  {
+    "objectID": "index.html#creating-workflows-with-targets",
+    "href": "index.html#creating-workflows-with-targets",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Creating workflows with targets",
+    "text": "Creating workflows with targets\n\nWorkflows define a set of steps to achieve some outcome\nE.g., a generic data analysis workflow\n\nImport data\nClean data\nModel data\nAnalysis results\n\nSome of these steps are independent and can be run simultaneously\nOther steps are dependent on previous steps\nThe targets package provides utilities for defining R workflows and running steps in parallel"
+  },
+  {
+    "objectID": "index.html#other-packages-for-explicit-parallelism",
+    "href": "index.html#other-packages-for-explicit-parallelism",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Other packages for explicit parallelism",
+    "text": "Other packages for explicit parallelism\n\nforeach for parallel for loops\npbdMPI for multi-node computing using MPI\nBiocParallel for Bioconductor objects\nrslurm or slurmR for submitting Slurm jobs from within R\ntargets for defining and running workflows\nSlurm job arrays or Launcher job packing can be useful too"
+  },
+  {
+    "objectID": "index.html#slurm-job-arrays",
+    "href": "index.html#slurm-job-arrays",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Slurm job arrays",
+    "text": "Slurm job arrays\n\nFor submitting and managing collections of similar jobs quickly and easily\nSome use cases\n\nVarying simulation or model parameters\nRunning the same processing steps on different datasets\nRunning the same models on different datasets\n\nSetting up a job array\n\nAdd #SBATCH --array=&lt;index&gt; option to job script\nEach job task will use the same resource requests\nModify job script or R script to use the array index\n\nSlurm job array docs"
+  },
+  {
+    "objectID": "index.html#job-array-example",
+    "href": "index.html#job-array-example",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Job array example",
+    "text": "Job array example"
+  },
+  {
+    "objectID": "index.html#job-array-example-continued",
+    "href": "index.html#job-array-example-continued",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Job array example (continued)",
+    "text": "Job array example (continued)"
+  },
+  {
+    "objectID": "index.html#many-task-computing",
+    "href": "index.html#many-task-computing",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Many-task computing",
+    "text": "Many-task computing\n\nLots of short-running jobs (&lt; 15 minutes)\n\nLots of serial jobs that could be run in parallel on different cores\nLots of parallel jobs that could be run sequentially or in parallel\n\nSubmitting lots of jobs (&gt; 1000) negatively impacts job scheduler\nPack short-running jobs into one job\nUse a program like Launcher"
+  },
+  {
+    "objectID": "index.html#using-gpu-acceleration",
+    "href": "index.html#using-gpu-acceleration",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Using GPU acceleration",
+    "text": "Using GPU acceleration\n\nMay not be worth using GPUs (compared to multi-threaded BLAS)\nNot many well-maintained packages\nMostly useful for machine learning packages\n\ntorch\nkeras\ntensorflow"
+  },
+  {
+    "objectID": "index.html#interfacing-to-a-compiled-language",
+    "href": "index.html#interfacing-to-a-compiled-language",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Interfacing to a compiled language",
+    "text": "Interfacing to a compiled language\n\nIf your R code is still not fast enough, consider rewriting it in a compiled language\nR has a native interface for C and Fortran programs\nUse Rcpp family of packages for interface for C++ programs\nCould also interface to Julia via JuliaCall\nWhich language to use depends on the data types, computations, etc."
+  },
+  {
+    "objectID": "index.html#additional-resources",
+    "href": "index.html#additional-resources",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "Additional resources",
+    "text": "Additional resources\n\nR Project\nR Manuals\nR package documentation\nCRAN Task View on High-Performance and Parallel Computing with R\nHPCRAN\nProgramming with Big Data in R\nFastverse\nFutureverse\nrOpenSci\nWeb books\n\nThe R Inferno\nAdvanced R\nEfficient R Programming"
+  },
+  {
+    "objectID": "index.html#carc-support",
+    "href": "index.html#carc-support",
+    "title": "HPC Workshop 1: Introduction to R",
+    "section": "CARC support",
+    "text": "CARC support\n\nUsing R on CARC HPC clusters\nR package installation guide\nSubmit a support ticket\nOffice Hours\n\nEvery Tuesday 2:30-5pm\nGet Zoom link here"
+  }
+]
